@@ -40,6 +40,17 @@ const SignIn = () =>{
                     <input  className="form-control" type="password" name="userPassword" value={password} onChange={(event) => onChangeHandler(event)}/>
                 </div>
 
+                <div className="text-center">
+                    Don't have an account?{" "}
+                    <Link to="signUp" className="text-blue-500 hover:text-blue-600">
+                        Sign up here
+                    </Link>{" "}
+                    <br />{" "}
+                    <Link to = "passwordReset" className="text-blue-500 hover:text-blue-600">
+                        Forgot Password?
+                    </Link>
+                </div>
+
                 <button className="btn btn-primary btn-block" onClick={event => handleEmailAndPassword(event,email,password)}> Sign In</button>
                 <Link to="passwordReset">Forgot Password</Link>
             </form>

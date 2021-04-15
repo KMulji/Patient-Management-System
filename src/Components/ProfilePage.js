@@ -8,7 +8,7 @@ function ProfilePage(){
         <div>
             <h1>Welcome {user.displayName}</h1>
             <h1>Your email is {user.email}</h1>
-            <button onClick={()=>auth.signOut()}>SignOout</button>
+            <button onClick={()=>auth.signOut()}>Sign Out</button>
         </div>
     )
 }
