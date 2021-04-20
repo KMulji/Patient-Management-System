@@ -1,6 +1,7 @@
 import React,{useState} from "react"
 import  {Link} from "@reach/router"
 import {auth} from "../firebase"
+
 const SignIn = () =>{
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
@@ -52,8 +53,13 @@ const SignIn = () =>{
                 </div>
 
                 <button className="btn btn-primary btn-block" onClick={event => handleEmailAndPassword(event,email,password)}> Sign In</button>
-                <Link to="passwordReset">Forgot Password</Link>
+
+
             </form>
+            <br/>
+
+            <br/>
+
 
         </div>
     )
