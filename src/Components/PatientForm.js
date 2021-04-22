@@ -3,48 +3,81 @@ import {UserContext} from "../providers/UserProvider";
 import {firestore} from "../firebase";
 import {useState} from "react"
 import {navigate} from "@reach/router";
-let PatientForm = ()=> {
+import AdminInfoForm from "./AdminInfoForm";
+import MedicalForm from "./MedicalForm";
+import SubmitForm from "./SubmitForm";
 
+let PatientForm = ()=> {
     const user = useContext(UserContext)
-    const [height,setHeight] = useState("")
-    const users = []
+    const [patientDetails,setPatientDetails] = useState({
+        firstName:"",
+        lastName:"",
+        DOB:"",
+        nationality:"",
+        occupation:"",
+        phone:""
+    })
+
+    const [step,setStep] = useState(0)
+
     let handleChange = (event) => {
         const {name, value} = event.currentTarget
 
-        if(name === "Height"){
-            setHeight(value)
+        if (name === "firstName") {
+            setPatientDetails({...patientDetails, firstName: value})
+        } else if (name === "lastName") {
+            setPatientDetails({...patientDetails, lastName: value})
+        } else if (name === "DOB") {
+            setPatientDetails({...patientDetails, DOB: value})
+        } else if (name === "country") {
+            setPatientDetails({...patientDetails, nationality: value})
+        } else if (name === "occupation") {
+            setPatientDetails({...patientDetails, occupation: value})
+        } else if (name === "phone") {
+            setPatientDetails({...patientDetails, phone: value})
+
         }
     }
+
 
     let formSubmit = async (event) =>{
         event.preventDefault()
         const userRef =  await firestore.doc(`users/${user.uid}`);
-        const ref2 = await  firestore.collection('/users').get().then(querySnapshot =>{
-            querySnapshot.forEach(doc => {
-                users.push({...doc.data()})
-            })
-        })
-        console.log(users)
-        userRef.update({firstTime: false,Height:height}).then(()=>{
-            navigate("/patientDetails")
+
+        userRef.update({firstTime: false,patientDetails}).then(()=>{
+            navigate("/home")
             window.location.reload()
+
         } )
 
+    }
+    let next = (event) =>{
 
+        event.preventDefault()
+        if (step<2){
+            setStep(prevState => prevState +1)
+        }
+
+    }
+
+    let prev = (event) => {
+        console.log(step)
+        event.preventDefault()
+        if (step>0){
+            setStep(prevState=> prevState -1)
+        }
 
     }
 
     return(
 
-        <div>
-
-            <form>
-                <input type="text" name= "Height" value={height} onChange={(event) => handleChange(event)}/>
-
-                <br/>
-                <button onClick={event => formSubmit(event)}>Submit</button>
-            </form>
-        </div>
+        step === 0?
+            <AdminInfoForm patient={patientDetails} handleFormChange={event=>handleChange(event)} move  = {event=>next(event)}/>
+            :
+            step ===1 ?
+            <MedicalForm move = {event=>next(event)} moveBack = {event=>prev(event)}/>
+            :
+            <SubmitForm submitForm={(event)=>formSubmit(event)}/>
     )
 }
 export default PatientForm

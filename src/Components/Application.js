@@ -4,28 +4,30 @@ import SignUp from "../Components/SignUp"
 import ProfilePage from "../Components/ProfilePage"
 import PasswordReset from "../Components/PasswordReset"
 
-import { Router} from "@reach/router"
-import {UserContext} from "../providers/UserProvider"
 
-
+import {navigate, Router} from "@reach/router"
+import {UserContext,LoadingContext} from "../providers/UserProvider"
 
 
 function Application(){
-
     const user = useContext(UserContext)
-    console.log(user)
+    const Loading = useContext(LoadingContext)
+
+
     return(
-
-        user ?
-                    <ProfilePage/>
+     !Loading ?
+        user  ?
+                <ProfilePage/>
             :
-
+                navigate("/") &&
                 <Router>
-                    <SignUp path="signUp" />
-                    <SignIn path = "/" />
-                    <PasswordReset path ="passwordReset"/>
+                    <SignIn path ="/"/>
+                    <SignUp path = "signUp"/>
+                    <PasswordReset path = "passwordReset"/>
                 </Router>
 
+         :
+         <h1>Loading...</h1>
     )
 }
 export default Application

@@ -15,8 +15,8 @@ let PasswordReset = ()=>{
     }
     const sendResetEmail = event => {
         event.preventDefault()
-        auth.
-            sendPasswordResetEmail(email)
+        auth
+            .sendPasswordResetEmail(email)
             .then(() => {
                 setEmailBeenSent(true)
                 //setTimeout(()=>{setEmailBeenSent(false)},3000)

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {Link} from "@reach/router";
 import {auth, generateUserDocument} from "../firebase"
+
 const SignUp = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,6 +16,9 @@ const SignUp = () => {
         try{
             const {user} = await auth.createUserWithEmailAndPassword(email, password);
             await generateUserDocument(user, {displayName, userType, firstTime});
+            await user.sendEmailVerification()
+
+
         }
         catch(error){
             setError('Error Signing up with email and password');
