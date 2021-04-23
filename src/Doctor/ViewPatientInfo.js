@@ -1,34 +1,34 @@
-import React from "react";
-import {Container} from "react-bootstrap";
+import React, {useState} from "react";
+import {Container, Form} from "react-bootstrap";
 
+let ViewPatientInfo = (props)=>{
 
-let AdminInfoForm = (props)=>{
+    let handleFormChange = (event)=>{
 
-    let handleMove = event =>{
-        event.preventDefault()
-
-        props.move(event)
     }
     return(
-        <Container fluid ="md">
-            <h1>Administrative Information</h1>
+        props.patient.userType === "doctor" ?
+            ""
+            :
+        <Container fluid="md">
             <form>
-                <div className="form-group">
-                    <label>First Name</label>
-                    <input className="form-control" type="text" name="firstName" value={props.patient.firstName} onChange={event => props.handleFormChange(event)}/>
-                </div>
-                <div className="form-group">
-                    <label>Last Name</label>
-                    <input  className="form-control" type="text" name="lastName" value={props.patient.lastName} onChange={event => props.handleFormChange(event)}/>
-                </div>
-                <div className="form-group">
-                    <label>Date of Birth</label>
-                    <input  className="form-control" type="date" name="DOB" value={props.patient.DOB} onChange={event => props.handleFormChange(event)}/>
-                </div>
-                <div className="form-group">
-                    <label>Country</label>
-                    <br/>
-                    <select  name="country" value={props.patient.nationality} onChange={event => props.handleFormChange(event)}>
+                <form>
+                    <div className="form-group">
+                        <label>First Name</label>
+                        <input className="form-control" type="text" name="firstName" value={props.patient.patientDetails.firstName} onChange={event => handleFormChange(event)}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Last Name</label>
+                        <input  className="form-control" type="text" name="lastName" value={props.patient.patientDetails.lastName} onChange={event => handleFormChange(event)}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Date of Birth</label>
+                        <input  className="form-control" type="date" name="DOB" value={props.patient.patientDetails.DOB} onChange={event => handleFormChange(event)}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Country</label>
+                        <br/>
+                        <select  name="country" value={props.patient.patientDetails.nationality} onChange={event => handleFormChange(event)}>
                             <option value="Afganistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
                             <option value="Algeria">Algeria</option>
@@ -275,21 +275,28 @@ let AdminInfoForm = (props)=>{
                             <option value="Zaire">Zaire</option>
                             <option value="Zambia">Zambia</option>
                             <option value="Zimbabwe">Zimbabwe</option>
-                    </select>
-                </div>
-                <div className="form-group">
-                    <label>Occupation</label>
-                    <input  className="form-control" type="text" name="occupation" value={props.patient.occupation} onChange={event => props.handleFormChange(event)}/>
-                </div>
-                <div className="form-group">
-                    <label>Phone Number</label>
-                    <input  className="form-control" type="tel" name="phone" value={props.patient.phone} onChange={event => props.handleFormChange(event)}/>
-                </div>
-                <button onClick={event => handleMove(event)}>Next</button>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label>Occupation</label>
+                        <input  className="form-control" type="text" name="occupation" value={props.patient.patientDetails.occupation} onChange={event => handleFormChange(event)}/>
+                    </div>
+                    <div className="form-group">
+                        <label>Phone Number</label>
+                        <input  className="form-control" type="tel" name="phone" value={props.patient.patientDetails.phone} onChange={event => handleFormChange(event)}/>
+                    </div>
+
+                </form>
             </form>
+            <br/>
+            <h1>First Name {props.patient.patientDetails.firstName }</h1>
+            <h1>Last Name {props.patient.patientDetails.lastName }</h1>
+            <h1>Date Of Birth is {props.patient.patientDetails.DOB}</h1>
+            <h1>Occupation:{props.patient.patientDetails.occupation}</h1>
+            <h1>Nationality:{props.patient.patientDetails.nationality}</h1>
+            <h1>Phone:{props.patient.patientDetails.phone}</h1>
+            <br/>
         </Container>
-
-
     )
 }
-export default AdminInfoForm
+export default ViewPatientInfo

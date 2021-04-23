@@ -1,5 +1,5 @@
 import React ,{useContext}from "react"
-import {UserContext} from "../providers/UserProvider"
+import {UserContext} from "../../providers/UserProvider"
 import {Container} from "react-bootstrap";
 
 function PatientDetails (){

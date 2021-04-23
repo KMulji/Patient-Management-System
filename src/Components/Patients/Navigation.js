@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Container, Nav, Navbar} from "react-bootstrap";
-import {auth} from "../firebase";
+import {auth} from "../../firebase";
 import {navigate, Redirect, Router} from "@reach/router";
 import PatientDetails from "./PatientDetails";
 import PatientForm from "./PatientForm";

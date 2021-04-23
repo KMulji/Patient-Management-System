@@ -1,6 +1,6 @@
 import React, {useContext} from "react"
-import {UserContext} from "../providers/UserProvider";
-import {firestore} from "../firebase";
+import {UserContext} from "../../providers/UserProvider";
+import {firestore} from "../../firebase";
 import {useState} from "react"
 import {navigate} from "@reach/router";
 import AdminInfoForm from "./AdminInfoForm";
@@ -9,13 +9,14 @@ import SubmitForm from "./SubmitForm";
 
 let PatientForm = ()=> {
     const user = useContext(UserContext)
+
     const [patientDetails,setPatientDetails] = useState({
-        firstName:"",
-        lastName:"",
-        DOB:"",
-        nationality:"",
-        occupation:"",
-        phone:""
+        firstName:user.patientDetails.firstName,
+        lastName:user.patientDetails.lastName,
+        DOB:user.patientDetails.DOB,
+        nationality:user.patientDetails.nationality,
+        occupation:user.patientDetails.occupation,
+        phone:user.patientDetails.phone
     })
 
     const [step,setStep] = useState(0)
