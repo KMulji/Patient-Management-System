@@ -8,7 +8,7 @@ import Navigation from "./Patients/Navigation";
 import firebase from "firebase";
 import "firebase/auth"
 import "firebase/firestore"
-import ViewPatientInfo from "../Doctor/ViewPatientInfo";
+import ViewPatientInfo from "./Doctor/ViewPatientInfo";
 function ProfilePage(){
 
     const user = useContext(UserContext)
