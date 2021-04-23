@@ -38,6 +38,7 @@ function ProfilePage(){
 
     console.log(step)
     return(
+
     auth.currentUser.emailVerified ?
 
         userType === "patient"   ?

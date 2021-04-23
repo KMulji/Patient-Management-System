@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect} from "react"
 import {UserContext} from "../../providers/UserProvider";
 import {firestore} from "../../firebase";
 import {useState} from "react"
@@ -6,17 +6,18 @@ import {navigate} from "@reach/router";
 import AdminInfoForm from "./AdminInfoForm";
 import MedicalForm from "./MedicalForm";
 import SubmitForm from "./SubmitForm";
+import firebase from "firebase";
 
 let PatientForm = ()=> {
     const user = useContext(UserContext)
 
     const [patientDetails,setPatientDetails] = useState({
-        firstName:user.patientDetails.firstName,
-        lastName:user.patientDetails.lastName,
-        DOB:user.patientDetails.DOB,
-        nationality:user.patientDetails.nationality,
-        occupation:user.patientDetails.occupation,
-        phone:user.patientDetails.phone
+        firstName: "",
+        lastName: "",
+        DOB: "",
+        nationality: "",
+        occupation: "",
+        phone: ""
     })
 
     const [step,setStep] = useState(0)
@@ -71,9 +72,8 @@ let PatientForm = ()=> {
     }
 
     return(
-
         step === 0?
-            <AdminInfoForm patient={patientDetails} handleFormChange={event=>handleChange(event)} move  = {event=>next(event)}/>
+            <AdminInfoForm patient={patientDetails}  handleFormChange={event=>handleChange(event)} move  = {event=>next(event)}/>
             :
             step ===1 ?
             <MedicalForm move = {event=>next(event)} moveBack = {event=>prev(event)}/>

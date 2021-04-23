@@ -4,8 +4,6 @@ import {UserContext} from "../../providers/UserProvider";
 
 
 let AdminInfoForm = (props)=>{
-
-
         let handleMove = event =>{
                 event.preventDefault()
 
