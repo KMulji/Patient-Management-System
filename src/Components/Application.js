@@ -12,7 +12,7 @@ import {UserContext,LoadingContext} from "../providers/UserProvider"
 function Application(){
     const user = useContext(UserContext)
     const Loading = useContext(LoadingContext)
-
+    // Hung made a comment here to push his branch
 
     return(
      !Loading ?
