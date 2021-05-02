@@ -17,10 +17,23 @@ let AdminInfoForm = (props)=>{
                     <label>First Name</label>
                     <input className="form-control" type="text" name="firstName" value={props.patient.firstName} onChange={event => props.handleFormChange(event)}/>
                 </div>
+                    <div className="form-group">
+                            <label>Middle</label>
+                            <input className="form-control" type="text" name="middleName" value={props.patient.middleName} onChange={event => props.handleFormChange(event)}/>
+                    </div>
                 <div className="form-group">
                     <label>Last Name</label>
                     <input  className="form-control" type="text" name="lastName" value={props.patient.lastName} onChange={event => props.handleFormChange(event)}/>
                 </div>
+                    <div className="form-group">
+                            <label>Gender</label>
+                            <br/>
+                            <select  name="gender" value={props.patient.gender} onChange={event => props.handleFormChange(event)}>
+                                    <option value={""}>Select Gender ------------></option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                            </select>
+                    </div>
                 <div className="form-group">
                     <label>Date of Birth</label>
                     <input  className="form-control" type="date" name="DOB" value={props.patient.DOB} onChange={event => props.handleFormChange(event)}/>
@@ -29,6 +42,7 @@ let AdminInfoForm = (props)=>{
                     <label>Country</label>
                     <br/>
                     <select  name="country" value={props.patient.nationality} onChange={event => props.handleFormChange(event)}>
+                            <option value={""}> Select Country ----------></option>
                             <option value="Afganistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
                             <option value="Algeria">Algeria</option>
@@ -277,6 +291,11 @@ let AdminInfoForm = (props)=>{
                             <option value="Zimbabwe">Zimbabwe</option>
                     </select>
                 </div>
+                    <div className="form-group">
+                            <label>Address</label>
+                            <br/>
+                            <textarea name="address" value={props.patient.address} onChange={event => props.handleFormChange(event)}/>
+                    </div>
                 <div className="form-group">
                     <label>Occupation</label>
                     <input  className="form-control" type="text" name="occupation" value={props.patient.occupation} onChange={event => props.handleFormChange(event)}/>
@@ -285,7 +304,19 @@ let AdminInfoForm = (props)=>{
                     <label>Phone Number</label>
                     <input  className="form-control" type="tel" name="phone" value={props.patient.phone} onChange={event => props.handleFormChange(event)}/>
                 </div>
-                <button onClick={event => handleMove(event)}>Next</button>
+                    <div className="form-group">
+                            <label>Next Of Kin Name</label>
+                            <input  className="form-control" type="text" name="nextOfKinName" value={props.patient.nextOfKinName} onChange={event => props.handleFormChange(event)}/>
+                    </div>
+                    <div className="form-group">
+                            <label>Next Of Kin Phone Number</label>
+                            <input  className="form-control" type="number" name="nextOfKinPhone" value={props.patient.nextOfKinPhone} onChange={event => props.handleFormChange(event)}/>
+                    </div>
+                    <div className="form-group">
+                            <label>Next Of Kin Phone Email</label>
+                            <input  className="form-control" type="email" name="nextOfKinEmail" value={props.patient.nextOfKinEmail} onChange={event => props.handleFormChange(event)}/>
+                    </div>
+                <button  className="btn btn-dark" onClick={event => handleMove(event)}>Next</button>
             </form>
         </Container>
 

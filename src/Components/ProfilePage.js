@@ -1,13 +1,14 @@
 import React, {useContext, useEffect, useState} from "react"
-import {auth, firestore} from "../firebase"
+import {auth} from "../firebase"
 import {UserContext} from "../providers/UserProvider"
 import PatientForm from "./Patients/PatientForm";
-import {navigate, Router} from "@reach/router"
+import {navigate} from "@reach/router"
 import EmailVerification from "./EmailVerification";
 import Navigation from "./Patients/Navigation";
 import firebase from "firebase";
 import "firebase/auth"
 import "firebase/firestore"
+
 import ViewPatientInfo from "./Doctor/ViewPatientInfo";
 function ProfilePage(){
 

@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import {Container, Form} from "react-bootstrap";
+import React  from "react";
+import {Container} from "react-bootstrap";
 
 let ViewPatientInfo = (props)=>{
 
