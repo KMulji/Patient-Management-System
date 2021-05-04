@@ -1,7 +1,5 @@
 import React, {useContext} from "react";
 import {Container} from "react-bootstrap";
-import {UserContext} from "../../providers/UserProvider";
-
 
 let AdminInfoForm = (props)=>{
         let handleMove = event =>{
@@ -9,13 +7,26 @@ let AdminInfoForm = (props)=>{
 
                 props.move(event)
         }
+
+        let disabled = ()=>{
+                const obj = props.patient
+                let disabled=true
+                for (const detail in obj) {
+                        if(obj[detail].length >1){
+                                disabled=false
+                        }else {
+                                disabled=true
+                        }
+                }
+                return disabled
+        }
     return(
         <Container fluid ="md">
             <h1>Administrative Information</h1>
             <form>
                 <div className="form-group">
                     <label>First Name</label>
-                    <input className="form-control" type="text" name="firstName" value={props.patient.firstName} onChange={event => props.handleFormChange(event)}/>
+                    <input className="form-control" type="text" name="firstName" value={props.patient.firstName} onChange={event => props.handleFormChange(event)} />
                 </div>
                     <div className="form-group">
                             <label>Middle</label>
@@ -316,7 +327,7 @@ let AdminInfoForm = (props)=>{
                             <label>Next Of Kin Phone Email</label>
                             <input  className="form-control" type="email" name="nextOfKinEmail" value={props.patient.nextOfKinEmail} onChange={event => props.handleFormChange(event)}/>
                     </div>
-                <button  className="btn btn-dark" onClick={event => handleMove(event)}>Next</button>
+                <button  className="btn btn-dark" onClick={event => handleMove(event)}  disabled={disabled()}>Next</button>
             </form>
         </Container>
 

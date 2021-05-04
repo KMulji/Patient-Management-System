@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect} from "react"
 import {UserContext} from "../../providers/UserProvider";
 import {firestore} from "../../firebase";
 import {useState} from "react"
@@ -6,32 +6,33 @@ import {navigate} from "@reach/router";
 import AdminInfoForm from "./AdminInfoForm";
 import MedicalForm from "./MedicalForm";
 import SubmitForm from "./SubmitForm";
+import firebase from "firebase";
 
-let PatientForm = ()=> {
+let PatientForm = (props)=> {
     const user = useContext(UserContext)
 
     const [patientDetails,setPatientDetails] = useState({
+        firstName: user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.firstName : user.patientDetails ? user.patientDetails.firstName :"",
+        middleName:  user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.middleName : user.patientDetails ? user.patientDetails.middleName :"",
+        lastName: user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.lastName : user.patientDetails ? user.patientDetails.lastName :"",
+        DOB: user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.DOB : user.patientDetails ? user.patientDetails.DOB :"",
+        nationality: user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.nationality : user.patientDetails ? user.patientDetails.nationality :"",
+        occupation: user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.occupation : user.patientDetails ? user.patientDetails.occupation :"",
+        phone: user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.phone : user.patientDetails ? user.patientDetails.phone :"",
+        gender: user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.gender : user.patientDetails ? user.patientDetails.gender :"",
+        address:user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.address : user.patientDetails ? user.patientDetails.address :"",
+        nextOfKinName:user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.nextOfKinName : user.patientDetails ? user.patientDetails.nextOfKinName :"",
+        nextOfKinPhone:user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.nextOfKinPhone : user.patientDetails ? user.patientDetails.nextOfKinPhone :"",
+        nextOfKinEmail:user.userType==="doctor"? props.patient.patientDetails && props.patient.patientDetails.nextOfKinEmail : user.patientDetails ? user.patientDetails.nextOfKinEmail :"",
 
-        firstName: user.patientDetails ? user.patientDetails.firstName:"",
-        middleName: user.patientDetails ? user.patientDetails.middleName:"",
-        lastName: user.patientDetails ? user.patientDetails.lastName:"",
-        DOB: user.patientDetails ? user.patientDetails.DOB:"",
-        nationality: user.patientDetails ? user.patientDetails.nationality:"",
-        occupation: user.patientDetails ? user.patientDetails.occupation:"",
-        phone: user.patientDetails ? user.patientDetails.phone:"",
-        gender: user.patientDetails ? user.patientDetails.gender:"",
-        address:user.patientDetails?user.patientDetails.address:"",
-        nextOfKinName:user.patientDetails?user.patientDetails.nextOfKinName:"",
-        nextOfKinPhone:user.patientDetails?user.patientDetails.nextOfKinPhone:"",
-        nextOfKinEmail:user.patientDetails?user.patientDetails.nextOfKinEmail:"",
     })
-    const[medication,setMedication] = useState(user.medication ? user.medication:[])
+    const[medication,setMedication] = useState( user.userType==="doctor"? props.patient.medication :  user.medication ? user.medication:[])
 
-    const[surgery,setSurgery] = useState(user.surgery? user.surgery : [])
+    const[surgery,setSurgery] = useState(user.userType==="doctor" ? props.patient.surgery: user.surgery? user.surgery : [])
 
-    const[allergies,setAllergies] = useState(user.allergies? user.allergies:[])
+    const[allergies,setAllergies] = useState( user.userType==="doctor"? props.patient.allergies :user.allergies? user.allergies:[])
 
-    const [chronic,setChronic ] = useState(user.chronic ? user.chronic:[])
+    const [chronic,setChronic ] = useState(   user.userType==="doctor"  ? props.patient.chronic: user.chronic ? user.chronic:[])
 
 
     const [step,setStep] = useState(0)
@@ -103,7 +104,6 @@ let PatientForm = ()=> {
             :
             step ===1 ?
             <MedicalForm  handleChage = {
-
                 event=>handleChange(event)}
                           medication = {medication}
                           setMedication={setMedication}
@@ -115,7 +115,6 @@ let PatientForm = ()=> {
                           setChronic = {setChronic}
                           move = {event=>next(event)}
                           moveBack = {event=>prev(event)}
-
             />
             :
             <SubmitForm

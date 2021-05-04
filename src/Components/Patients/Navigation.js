@@ -1,14 +1,25 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Container, Nav, Navbar} from "react-bootstrap";
 import {auth} from "../../firebase";
 import {navigate, Redirect, Router} from "@reach/router";
 import PatientDetails from "./PatientDetails";
 import PatientForm from "./PatientForm";
 import Home from "./Home";
-
+import {UserContext} from "../../providers/UserProvider";
+import DoctorsHome from "../Doctor/DoctorsHome";
+import PreConsultation from "../Doctor/PreConsultation";
 function Navigation(){
+    const user = useContext(UserContext)
     const [number,setNumber] = useState(0)
+    const [navLinks,setNavLinks] = useState(user.userType ==="patient"? {l1:"/home",l2:"/patientDetails",l3:"/patientForm"}: {l1:"/doctorsHome",l2:"/preConsultation"})
+    const [names,setNames] = useState(user.userType ==="patient"? {n1:"Home",n2:"My Details", n3:"Edit Information"}:{n1:"home",n2:"PreConsultation Forms"})
+
+    let renderButtons =  ()=>{
+        return user.userType==="patient" ? "btn btn-light btn-sm" :"invisible btn btn-light btn-sm"
+    }
+
     return(
+
         <Container fluid>
 
             <Navbar collapseOnSelect  expand="sm" bg="dark" variant="dark">
@@ -20,26 +31,26 @@ function Navigation(){
                         <Nav className="mr-auto">
 
                             <button
-                            className="btn btn-light btn-sm"
-                            onClick={()=>{navigate("/home")
+                            className={"btn btn-light btn-sm"}
+                            onClick={()=>{navigate(navLinks.l1)
                                 setNumber(prevState => prevState+1)}}
                         >
-                            Home
+                                {names.n1}
                         </button>
 
                         <button
-                            className="btn btn-light btn-sm"
-                            onClick={()=>{navigate("/patientDetails")
+                            className={"btn btn-light btn-sm"}
+                            onClick={()=>{navigate(navLinks.l2)
                                 setNumber(prevState => prevState+1)}}
                         >
-                            My Details
+                            {names.n2}
                         </button>
                         <button
-                            className="btn btn-light btn-sm"
-                            onClick={()=>{navigate("/patientForm")
+                            className={renderButtons()}
+                            onClick={()=>{navigate(navLinks.l3)
                                 setNumber(prevState => prevState+1)}}
                         >
-                            Edit Information
+                            {names.n3}
                         </button>
 
                         <button className="btn btn-danger btn-sm" onClick={() => {
@@ -53,11 +64,15 @@ function Navigation(){
 
             </Navbar>
             <Router>
+
                 <PatientDetails path = "/patientDetails"/>
                 <PatientForm path = "/patientForm"/>
                 <Home path ="/home"/>
+                <DoctorsHome path = "/doctorsHome"/>
+                <PreConsultation path = "/preConsultation"/>
+
             </Router>
-            {number ===0 ? (<Redirect to="/home" noThrow/>): ""}
+            {number ===0 ? (<Redirect to={navLinks.l1} noThrow/>): ""}
         </Container>
     )
 }

@@ -84,10 +84,6 @@ const SignUp = () => {
                         Sign up
                     </button>
                 </form>
-                {/*<p className="text-center my-3">or</p>*/}
-                {/*<button className="bg-red-500 hover:bg-red-600 w-full py-2">*/}
-                {/*    Sign In with Google*/}
-                {/*</button>*/}
                 <p className="text-center my-3">
                     Already have an account?{" "}
                     <Link to="/" className="text-blue-500 hover:text-blue-600">
