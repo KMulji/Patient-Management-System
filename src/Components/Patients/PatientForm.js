@@ -69,14 +69,25 @@ let PatientForm = (props)=> {
 
 
     let formSubmit = async (event) =>{
+        if (user.userType === "patient"){
+            const userRef =  await firestore.doc(`users/${user.uid}`);
+
+            userRef.update({firstTime: false,patientDetails,medication,surgery,allergies,chronic}).then(()=>{
+                navigate("/home")
+                window.location.reload()
+
+            } )
+        }else {
+            const userRef =  await firestore.doc(`users/${props.patient.id}`);
+
+            userRef.update({firstTime: false,patientDetails,medication,surgery,allergies,chronic}).then(()=>{
+                navigate("/home")
+                window.location.reload()
+
+            } )
+        }
         event.preventDefault()
-        const userRef =  await firestore.doc(`users/${user.uid}`);
 
-        userRef.update({firstTime: false,patientDetails,medication,surgery,allergies,chronic}).then(()=>{
-            navigate("/home")
-            window.location.reload()
-
-        } )
 
     }
     let next = (event) =>{
