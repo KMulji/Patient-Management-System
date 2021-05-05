@@ -4,7 +4,7 @@ import {Container, Table} from "react-bootstrap";
 
 function PatientDetails (){
     const user = useContext(UserContext)
-    const { email,patientDetails} = user;
+
 
     const medicationObjs =user.medication.map((item,index) =><p key={index}>{item.name}</p> )
     const surgObjs =user.surgery.map((item,index) =><p key={index}>{item.name} {item.date}</p> )

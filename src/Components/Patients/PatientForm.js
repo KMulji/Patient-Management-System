@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react"
+import React, {useContext} from "react"
 import {UserContext} from "../../providers/UserProvider";
 import {firestore} from "../../firebase";
 import {useState} from "react"
@@ -6,7 +6,7 @@ import {navigate} from "@reach/router";
 import AdminInfoForm from "./AdminInfoForm";
 import MedicalForm from "./MedicalForm";
 import SubmitForm from "./SubmitForm";
-import firebase from "firebase";
+
 
 let PatientForm = (props)=> {
     const user = useContext(UserContext)
@@ -40,30 +40,31 @@ let PatientForm = (props)=> {
     let handleChange = (event) => {
         const {name, value} = event.currentTarget
 
+            let upperCaseValue = value.toUpperCase()
         if (name === "firstName") {
-            setPatientDetails({...patientDetails, firstName: value})
+            setPatientDetails({...patientDetails, firstName: upperCaseValue})
         } else if (name === "lastName") {
-            setPatientDetails({...patientDetails, lastName: value})
+            setPatientDetails({...patientDetails, lastName: upperCaseValue})
         } else if (name === "DOB") {
-            setPatientDetails({...patientDetails, DOB: value})
+            setPatientDetails({...patientDetails, DOB: upperCaseValue})
         } else if (name === "country") {
             setPatientDetails({...patientDetails, nationality: value})
         } else if (name === "occupation") {
-            setPatientDetails({...patientDetails, occupation: value})
+            setPatientDetails({...patientDetails, occupation: upperCaseValue})
         } else if (name === "phone") {
-            setPatientDetails({...patientDetails, phone: value})
+            setPatientDetails({...patientDetails, phone: upperCaseValue})
         } else if (name === "gender") {
-            setPatientDetails({...patientDetails, gender: value})
+            setPatientDetails({...patientDetails, gender: upperCaseValue})
         } else if (name === "middleName") {
-            setPatientDetails({...patientDetails, middleName: value})
+            setPatientDetails({...patientDetails, middleName: upperCaseValue})
         }else if (name==="address"){
-            setPatientDetails({...patientDetails,address: value})
+            setPatientDetails({...patientDetails,address: upperCaseValue})
         }else  if (name === "nextOfKinName"){
-            setPatientDetails({...patientDetails,nextOfKinName: value})
+            setPatientDetails({...patientDetails,nextOfKinName: upperCaseValue})
         }else if (name === "nextOfKinEmail"){
             setPatientDetails({...patientDetails,nextOfKinEmail: value})
         }else if (name === "nextOfKinPhone"){
-            setPatientDetails({...patientDetails,nextOfKinPhone: value})
+            setPatientDetails({...patientDetails,nextOfKinPhone: upperCaseValue})
         }
     }
 

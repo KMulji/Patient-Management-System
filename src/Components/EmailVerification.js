@@ -1,9 +1,8 @@
-import React, {useContext} from "react";
+import React from "react";
 import {auth} from "../firebase";
 import {navigate} from "@reach/router";
 import {Container} from "react-bootstrap";
-import {UserContext} from "../providers/UserProvider";
-import getUserDocument from "firebase"
+
 
 function EmailVerification(){
 

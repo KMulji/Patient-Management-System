@@ -1,12 +1,14 @@
-import React, {useContext, useEffect, useState} from "react"
+import React, {useContext} from "react"
 import {auth} from "../firebase"
 import {UserContext} from "../providers/UserProvider"
 import PatientForm from "./Patients/PatientForm";
 import EmailVerification from "./EmailVerification";
 import Navigation from "./Patients/Navigation";
-import firebase from "firebase";
+
 import "firebase/auth"
 import "firebase/firestore"
+import {navigate} from "@reach/router";
+
 
 function ProfilePage(){
 
@@ -20,8 +22,14 @@ function ProfilePage(){
 
         userType === "patient"   ?
             firstTime===true ?
+                <div>
+                    <button className="btn btn-danger btn-sm" onClick={() => {
+                        auth.signOut()
+                        navigate("/")
+                    }}>Sign out</button>
+                    <PatientForm />
+                </div>
 
-                <PatientForm />
                 :
                 <Navigation/>
             :

@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import {Container} from "react-bootstrap";
 
 let AdminInfoForm = (props)=>{
@@ -9,16 +9,19 @@ let AdminInfoForm = (props)=>{
         }
 
         let disabled = ()=>{
-                const obj = props.patient
-                let disabled=true
-                for (const detail in obj) {
-                        if(obj[detail].length >1){
-                                disabled=false
-                        }else {
-                                disabled=true
+
+                        const obj = props.patient
+                        let disabled=true
+                        for (const detail in obj) {
+                                if(obj[detail].length >1){
+                                        disabled=false
+                                }else {
+                                        disabled=true
+                                }
                         }
-                }
-                return disabled
+                        return disabled
+
+
         }
     return(
         <Container fluid ="md">
@@ -41,8 +44,8 @@ let AdminInfoForm = (props)=>{
                             <br/>
                             <select  name="gender" value={props.patient.gender} onChange={event => props.handleFormChange(event)}>
                                     <option value={""}>Select Gender ------------></option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                    <option value="MALE">Male</option>
+                                    <option value="FEMALE">Female</option>
                             </select>
                     </div>
                 <div className="form-group">

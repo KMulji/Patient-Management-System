@@ -7,12 +7,13 @@ import PatientForm from "./PatientForm";
 import Home from "./Home";
 import {UserContext} from "../../providers/UserProvider";
 import DoctorsHome from "../Doctor/DoctorsHome";
+import Search from "../Doctor/Search";
 import PreConsultation from "../Doctor/PreConsultation";
 function Navigation(){
     const user = useContext(UserContext)
     const [number,setNumber] = useState(0)
-    const [navLinks,setNavLinks] = useState(user.userType ==="patient"? {l1:"/home",l2:"/patientDetails",l3:"/patientForm"}: {l1:"/doctorsHome",l2:"/preConsultation"})
-    const [names,setNames] = useState(user.userType ==="patient"? {n1:"Home",n2:"My Details", n3:"Edit Information"}:{n1:"home",n2:"PreConsultation Forms"})
+    const [navLinks] = useState(user.userType ==="patient"? {l1:"/home",l2:"/patientDetails",l3:"/patientForm"}: {l1:"/doctorsHome",l2:"/searchForms"})
+    const [names] = useState(user.userType ==="patient"? {n1:"Home",n2:"My Details", n3:"Edit Information"}:{n1:"home",n2:"Search Forms"})
 
     let renderButtons =  ()=>{
         return user.userType==="patient" ? "btn btn-light btn-sm" :"invisible btn btn-light btn-sm"
@@ -69,7 +70,8 @@ function Navigation(){
                 <PatientForm path = "/patientForm"/>
                 <Home path ="/home"/>
                 <DoctorsHome path = "/doctorsHome"/>
-                <PreConsultation path = "/preConsultation"/>
+                <Search path = "/searchForms"/>
+                <PreConsultation path="/preConsultation" />
 
             </Router>
             {number ===0 ? (<Redirect to={navLinks.l1} noThrow/>): ""}

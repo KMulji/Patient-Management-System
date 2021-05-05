@@ -25,10 +25,7 @@ let MedicalForm = (props)=>{
         }
         event.preventDefault()
     }
-    let genericDelete = (event,deleteIndex,arr,setArr) =>{
-        const newArr = arr.filter((_,index)=>index!==deleteIndex)
-        setArr(newArr)
-    }
+
     let handleDelete = (event,deleteIndex)=>{
 
         event.preventDefault()
