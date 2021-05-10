@@ -2,14 +2,18 @@ import React, {useContext, useEffect, useState} from "react"
 import {auth} from "../firebase"
 import {UserContext} from "../providers/UserProvider"
 import PatientForm from "./Patients/PatientForm";
-import {navigate} from "@reach/router"
+import {navigate, Router} from "@reach/router"
 import EmailVerification from "./EmailVerification";
 import Navigation from "./Patients/Navigation";
 import firebase from "firebase";
 import "firebase/auth"
 import "firebase/firestore"
 
+import DocNavigation from "./Doctor/DocNavigation";
 import ViewPatientInfo from "./Doctor/ViewPatientInfo";
+import PatientDetails from "./Patients/PatientDetails";
+import Home from "./Patients/Home";
+import DoctorForm from "./Doctor/DoctorForm";
 function ProfilePage(){
 
     const user = useContext(UserContext)
@@ -48,18 +52,27 @@ function ProfilePage(){
                 :
                 <Navigation/>
             :
+            firstTime===true ?
+                <DoctorForm/>
+                :
+                <DocNavigation/>
 
-            <div>
-                <h1>Doctor</h1>
+            // <div>
+            //     <h1>Doctor</h1>
+            //
+            //     {patientObjects}
+            //     <button onClick={event => back(event)}>back</button>
+            //     <button onClick={event => next(event)}>next</button>
+            //     <button onClick={() => {
+            //         auth.signOut()
+            //         navigate("/")
+            //     }}>Sign out</button>
+            //     <button onClick={()=>{navigate("/dochome")}}>Navigation</button>
+            //     <Router>
+            //         <DocNavigation path = "/dochome"/>
+            //     </Router>
+            // </div>
 
-                {patientObjects[step]}
-                <button onClick={event => back(event)}>back</button>
-                <button onClick={event => next(event)}>next</button>
-                <button onClick={() => {
-                    auth.signOut()
-                    navigate("/")
-                }}>Sign out</button>
-            </div>
         :
         <EmailVerification/>
     )
