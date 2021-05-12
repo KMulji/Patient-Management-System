@@ -9,7 +9,6 @@ let AdminInfoForm = (props)=>{
         }
 
         let disabled = ()=>{
-
                         const obj = props.patient
                         let disabled=true
                         for (const detail in obj) {
@@ -20,8 +19,6 @@ let AdminInfoForm = (props)=>{
                                 }
                         }
                         return disabled
-
-
         }
     return(
         <Container fluid ="md">

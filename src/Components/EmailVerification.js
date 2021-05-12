@@ -5,9 +5,6 @@ import {Container} from "react-bootstrap";
 
 
 function EmailVerification(){
-
-
-
     let verifiedHandler = (event)=>{
             window.location.reload()
     }

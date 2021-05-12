@@ -1,7 +1,6 @@
 import React, { useEffect, useState} from "react";
 
 import firebase from "firebase";
-import PatientForm from "../Patients/PatientForm";
 import {Container} from "react-bootstrap";
 import PreConsultation from "./PreConsultation";
 import Consultation from "./Consultation";
@@ -59,8 +58,11 @@ let Search = ()=>{
 
             <button onClick={event => go(event)} disabled={disabled()} >View PreConsultation </button>
             <button onClick={event => con(event)} disabled={disabled()} >Consultation</button>
+
             {viewPrecon ? (<PreConsultation patient = {filteredPatients}  />) :""}
+
             {cons ? (<Consultation patient={filteredPatients} />):""}
+
         </Container>
 
     )

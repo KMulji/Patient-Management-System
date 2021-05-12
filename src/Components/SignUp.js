@@ -8,14 +8,14 @@ const SignUp = () => {
     const [displayName, setDisplayName] = useState("");
     const [userType,setUserType] = useState("")
     const [firstTime] = useState(true)
-
+    const [consultation] = useState([])
     const [error, setError] = useState(null);
 
     const createUserWithEmailAndPasswordHandler = async (event, email, password) => {
         event.preventDefault();
         try{
             const {user} = await auth.createUserWithEmailAndPassword(email, password);
-            await generateUserDocument(user, {displayName, userType, firstTime});
+            await generateUserDocument(user, {displayName, userType, firstTime,consultation});
             await user.sendEmailVerification()
 
 
