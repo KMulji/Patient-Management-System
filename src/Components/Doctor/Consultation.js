@@ -6,19 +6,24 @@ import ContactLensTable from "./ContactLensTable";
 import firebase from "firebase"
 import AutoRefractionTable from "./AutoRefractionTable";
 import OpticalCorrectionTable from "./OpticalCorrectionTable";
+import PrevConsultations from "./PrevConsultations";
+import ExaminationTable from "./ExaminationTable";
+import AntTable from "./AntTable";
+import PostTable from "./PostTable";
+import LensFittingTable from "./LensFittingTable";
 let Consultation = (props)=>{
 
     let getDate = ()=>{
         let today = new Date().toLocaleDateString()
-        let time = new Date().toLocaleTimeString()
-        return time + today
+
+        return today
     }
     const [consultation,setCons] = useState(      [])
     useEffect(()=>{
             const fetchData = async () => {
                 if (props.patient[0]){
                     const db = firebase.firestore()
-                    const data = await db.collection('/users').doc(props.patient[0].id).collection('consultations').get()
+                    const data = await db.collection('/users').doc(props.patient[0].id).collection('consultations').orderBy("date","asc").get()
                     setCons(data.docs.map(doc => ({...doc.data(), id: doc.id})))
                 }
             }
@@ -123,13 +128,41 @@ let Consultation = (props)=>{
                         <br/>
                         <OpticalCorrectionTable handleChange = {handleOpticalChange} optical ={opticalCorrection} handleSpecs = {handleSpecs} hasSpecs ={hasSpecs}  />
                         <br/>
+
                         <h1>Current Contact Lens</h1>
                         <br/>
                         <ContactLensTable handleChange={handleContactLens} />
                         <br/>
+
                         <h1>Examination</h1>
+                        <br/>
+                        <ExaminationTable/>
+                        <br/>
 
+                        <h1>Anterior Segment</h1>
+                        <AntTable/>
+                        <br/>
 
+                        <h1>Posterior Segment</h1>
+                        <PostTable/>
+                        <br/>
+
+                        <h1>Contact Lens Fitting</h1>
+
+                        <br/>
+                        <h1>Contact Lens Fitting</h1>
+                        <LensFittingTable/>
+                        <br/>
+
+                        <h1>Conclusion</h1>
+                        <textarea/>
+                        <br/>
+
+                        <h1>Recommendations</h1>
+                        <textarea/>
+
+                        <br/>
+                        {/*<PrevConsultations consultation = {consultation}/>*/}
                         <button onClick={(event)=>formSubmit(event)}>Form Submit</button>
                     </form>
                 </Container>
