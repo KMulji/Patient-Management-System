@@ -1,15 +1,43 @@
-import React,{ useContext } from "react"
+import React, {useContext} from "react"
 import {auth} from "../firebase"
 import {UserContext} from "../providers/UserProvider"
+import PatientForm from "./Patients/PatientForm";
+import EmailVerification from "./EmailVerification";
+import Navigation from "./Patients/Navigation";
+
+import "firebase/auth"
+import "firebase/firestore"
+import {navigate} from "@reach/router";
+
+
 function ProfilePage(){
+
     const user = useContext(UserContext)
+    const {userType,firstTime} = user;
+
 
     return(
-        <div>
-            <h1>Welcome {user.displayName}</h1>
-            <h1>Your email is {user.email}</h1>
-            <button onClick={()=>auth.signOut()}>Sign Out</button>
-        </div>
+
+    auth.currentUser.emailVerified ?
+
+        userType === "patient"   ?
+            firstTime===true ?
+                <div>
+                    <button className="btn btn-danger btn-sm" onClick={() => {
+                        auth.signOut()
+                        navigate("/")
+                    }}>Sign out</button>
+                    <PatientForm />
+                </div>
+
+                :
+                <Navigation/>
+            :
+            <div>
+                <Navigation/>
+            </div>
+        :
+        <EmailVerification/>
     )
 }
 export default ProfilePage
