@@ -17,17 +17,17 @@ let ExaminationTable = (props) =>{
                 <tbody>
                 <tr>
                     <td>RE</td>
-                    <td><input name="reSphere" /></td>
-                    <td><input name="reCyl"/></td>
-                    <td><input name="reAxis"/></td>
-                    <td><input name="reCdVa"/></td>
+                    <td><input  onChange={event => props.handleChange(event)} name="reSphere" /></td>
+                    <td><input  onChange={event => props.handleChange(event)} name="reCyl"/></td>
+                    <td><  input onChange={event => props.handleChange(event)}   name="reAxis"/></td>
+                    <td><input  onChange={event => props.handleChange(event)} name="reCdVa"/></td>
                 </tr>
                 <tr>
                     <td>LE</td>
-                    <td><input name="leSphere" /></td>
-                    <td><input name="leCyl"/></td>
-                    <td><input name="leAxis"/></td>
-                    <td><input name="leCdVa"/></td>
+                    <td><input   onChange={event => props.handleChange(event)} name="leSphere" /></td>
+                    <td><input  onChange={event => props.handleChange(event)} name="leCyl"/></td>
+                    <td><input  onChange={event => props.handleChange(event)} name="leAxis"/></td>
+                    <td><input onChange={event => props.handleChange(event)} name="leCdVa"/></td>
                 </tr>
                 </tbody>
             </Table>
@@ -43,27 +43,27 @@ let ExaminationTable = (props) =>{
                 <tbody>
                 <tr>
                     <td>Distance Cover Test</td>
-                    <td><input name="DCoverTest" /></td>
+                    <td><input  onChange={event => props.handleChange(event)} name="DCoverTest" /></td>
                 </tr>
                 <tr>
                     <td>Near Cover Test</td>
-                    <td><input name="NCoverTest" /></td>
+                    <td><input  onChange={event => props.handleChange(event)} name="NCoverTest" /></td>
                 </tr>
                 <tr>
                     <td>Near point of convergence</td>
-                    <td><input name="NPOC" /></td>
+                    <td><input  onChange={event => props.handleChange(event)} name="NPOC" /></td>
                 </tr>
                 <tr>
                     <td>Motility</td>
-                    <td><input name="Motility" /></td>
+                    <td><input  onChange={event => props.handleChange(event)} name="Motility" /></td>
                 </tr>
                 <tr>
                     <td>Color Vision Test</td>
-                    <td><input name="CVT" /></td>
+                    <td><input  onChange={event => props.handleChange(event)} name="CVT" /></td>
                 </tr>
                 <tr>
                     <td>Stereo test</td>
-                    <td><input name="stereoTest" /></td>
+                    <td><input  onChange={event => props.handleChange(event)} name="stereoTest" /></td>
                 </tr>
                 </tbody>
             </Table>

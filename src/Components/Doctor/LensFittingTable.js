@@ -18,19 +18,19 @@ let LensFittingTable = props =>{
             <tbody>
             <tr>
                 <td>RE</td>
-                <td><input name="reDesign" /></td>
-                <td><input name="reBase" /></td>
-                <td><input name="rePower" /></td>
-                <td><input name="reDiameter" /></td>
-                <td><input name="reBCVA" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reDesign" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reBase" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="rePower" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reDiameter" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reBCVA" /></td>
             </tr>
             <tr>
                 <td>LE</td>
-                <td><input name="leDesign" /></td>
-                <td><input name="leBase" /></td>
-                <td><input name="lePower" /></td>
-                <td><input name="leDiameter" /></td>
-                <td><input name="leBCVA" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leDesign" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leBase" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="lePower" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leDiameter" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leBCVA" /></td>
             </tr>
 
             </tbody>

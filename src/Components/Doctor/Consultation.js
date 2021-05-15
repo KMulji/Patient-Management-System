@@ -61,6 +61,62 @@ let Consultation = (props)=>{
     })
     const [hasSpecs,setHasSpecs] = useState(null)
 
+    const [examination,setExamination] = useState({
+        reSphere:"",
+        reCyl:"",
+        reAxis:"",
+        reCdVa:"",
+        leSphere:"",
+        leCyl:"",
+        leAxis:"",
+        leCdVa:"",
+        DCoverTest:"",
+        NCoverTest:"",
+        NPOC:"",
+        Motility:"",
+        CVT:"",
+        stereoTest:""
+    })
+    const [antSeg,setAntSeg] = useState({
+        reLids:"",
+        leLids:"",
+        reCornea:"",
+        leCornea:"",
+        reCon:"",
+        leCon:"",
+        reTears:"",
+        leTears:"",
+        reTon:"",
+        leTon:""
+    })
+    const [postSeg,setPostSeg] = useState({
+        reMedia:"",
+        leMedia:"",
+        reDisc:"",
+        leDisc:"",
+        reCD:"",
+        leCD:"",
+        reVessels:"",
+        leVessels:"",
+        reBackground:"",
+        leBackground:"",
+        reMacula:"",
+        leMacula:""
+    })
+    const [lensFittins,setLesnFitting] = useState({
+        reDesign:"",
+        reBase:"",
+        rePower:"",
+        reDiameter:"",
+        reBCVA:"",
+        leDesign:"",
+        leBase:"",
+        lePower:"",
+        leDiameter:"",
+        leBCVA:""
+    })
+    let [conclusion,setConclusion] = useState("")
+    let [observation,setObservation] = useState("")
     let handleSpecs = (event)=>{
         const {name,value} = event.currentTarget
         if (name==="hasSpecs"){
@@ -86,7 +142,30 @@ let Consultation = (props)=>{
         const {name,value} = event.currentTarget
         setContactLens({...contactLens,[name]:value})
     }
-
+    let handleExamination = event => {
+        const {name,value} = event.currentTarget
+        setExamination({...examination,[name]:value})
+    }
+    let handlePostSegment = event => {
+        const {name,value} = event.currentTarget
+        setPostSeg({...postSeg,[name]:value})
+    }
+    let handleAntSeg = event => {
+        const {name,value} = event.currentTarget
+        setAntSeg({...antSeg,[name]:value})
+    }
+    let handleLensFitting = event => {
+        const {name,value} = event.currentTarget
+        setLesnFitting({...lensFittins,[name]:value})
+    }
+    let handleConclusionObservation = event =>{
+        const {name,value} = event.currentTarget
+        if (name==="conclusion"){
+            setConclusion(value)
+        }else if (name==="observation"){
+            setObservation(value)
+        }
+    }
 
     let formSubmit = async (event) =>{
         event.preventDefault()
@@ -99,7 +178,13 @@ let Consultation = (props)=>{
                     autoRefraction:autoRefraction,
                     hasSpecs:!hasSpecs,
                     opticalCorrection:opticalCorrection,
-                    contactLens:contactLens
+                    contactLens:contactLens,
+                    examination:examination,
+                    antSeg:antSeg,
+                    postSeg:postSeg,
+                    lensFittins:lensFittins,
+                    observation:observation,
+                    conclusion:conclusion
                 });
             } catch (error) {
                 console.error("Error creating user document", error);
@@ -136,30 +221,30 @@ let Consultation = (props)=>{
 
                         <h1>Examination</h1>
                         <br/>
-                        <ExaminationTable/>
+                        <ExaminationTable handleChange = {handleExamination}/>
                         <br/>
 
                         <h1>Anterior Segment</h1>
-                        <AntTable/>
+                        <AntTable handleChange = {handleAntSeg}/>
                         <br/>
 
                         <h1>Posterior Segment</h1>
-                        <PostTable/>
+                        <PostTable handleChange ={handlePostSegment} />
                         <br/>
 
                         <h1>Contact Lens Fitting</h1>
 
                         <br/>
                         <h1>Contact Lens Fitting</h1>
-                        <LensFittingTable/>
+                        <LensFittingTable handleChange = {handleLensFitting}/>
                         <br/>
 
                         <h1>Conclusion</h1>
-                        <textarea/>
+                        <textarea name="conclusion" value={conclusion} onChange={event => handleConclusionObservation(event)} />
                         <br/>
 
                         <h1>Recommendations</h1>
-                        <textarea/>
+                        <textarea name="observation" value={observation}  onChange={event => handleConclusionObservation(event)} />
 
                         <br/>
                         {/*<PrevConsultations consultation = {consultation}/>*/}
