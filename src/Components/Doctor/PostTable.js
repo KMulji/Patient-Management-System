@@ -14,35 +14,35 @@ let PostTable = props =>{
             </thead>
             <tbody>
             <tr>
-                <td><input name="reMedia" /></td>
+                <td><input  onChange={event => props.handleChange(event)} name="reMedia" /></td>
                 <td>Media</td>
-                <td><input name="leMedia" /></td>
+                <td><input  onChange={event => props.handleChange(event)} name="leMedia" /></td>
 
             </tr>
             <tr>
-                <td><input name="reDisc" /></td>
+                <td><input  onChange={event => props.handleChange(event)} name="reDisc" /></td>
                 <td>Disc</td>
-                <td><input name="leDisc" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leDisc" /></td>
             </tr>
             <tr>
-                <td><input name="reCD" /></td>
+                <td><input  onChange={event => props.handleChange(event)} name="reCD" /></td>
                 <td>CD</td>
-                <td><input name="leCD" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leCD" /></td>
             </tr>
             <tr>
-                <td><input name="reVessels" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reVessels" /></td>
                 <td>Vessels</td>
-                <td><input name="leVessels" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leVessels" /></td>
             </tr>
             <tr>
-                <td><input name="reBackground" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reBackground" /></td>
                 <td>Background</td>
-                <td><input name="leBackground" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leBackground" /></td>
             </tr>
             <tr>
-                <td><input name="reMacula" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reMacula" /></td>
                 <td>macula</td>
-                <td><input name="leMacula" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leMacula" /></td>
             </tr>
             </tbody>
         </Table>

@@ -14,30 +14,30 @@ let AntTable = props =>{
             </thead>
             <tbody>
             <tr>
-                <td><input name="reLids" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reLids" /></td>
                 <td>Lids/Lashes</td>
-                <td><input name="leLids" /></td>
+                <td><input  onChange={event => props.handleChange(event)} name="leLids" /></td>
 
             </tr>
             <tr>
-                <td><input name="reCornea" /></td>
+                <td><input  onChange={event => props.handleChange(event)} name="reCornea" /></td>
                 <td>Cornea</td>
-                <td><input name="leCornea" /></td>
+                <td><input  onChange={event => props.handleChange(event)} name="leCornea" /></td>
             </tr>
             <tr>
-                <td><input name="reCon" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reCon" /></td>
                 <td>Conjunctiva</td>
-                <td><input name="leCon" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leCon" /></td>
             </tr>
             <tr>
-                <td><input name="reTears" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reTears" /></td>
                 <td>tears</td>
-                <td><input name="leTears" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leTears" /></td>
             </tr>
             <tr>
-                <td><input name="reTon" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reTon" /></td>
                 <td>IOP(Tonopen/GAT)@</td>
-                <td><input name="leTon" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="leTon" /></td>
             </tr>
             </tbody>
         </Table>
