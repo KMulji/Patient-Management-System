@@ -30,8 +30,8 @@ let Consultation = (props)=>{
         fetchData()
     },[])
 
-
-    const [date,setDate] = useState(getDate)
+    console.log(consultation)
+    const [date] = useState(getDate)
 
     const [autoRefraction,setAutoRefraction] = useState({
         reSphere:"",
@@ -117,6 +117,9 @@ let Consultation = (props)=>{
     })
     let [conclusion,setConclusion] = useState("")
     let [observation,setObservation] = useState("")
+
+    const [prevCon,setPrevCon] = useState(false)
+
     let handleSpecs = (event)=>{
         const {name,value} = event.currentTarget
         if (name==="hasSpecs"){
@@ -186,26 +189,36 @@ let Consultation = (props)=>{
                     observation:observation,
                     conclusion:conclusion
                 });
+
             } catch (error) {
                 console.error("Error creating user document", error);
             }
         }
 
         }
-
-    //let consulTationObjs = consultation.map((item,index)=><p key={index}> {item.date} {item.observation} </p>)
-
-
+    let prev = (event)=>{
+        event.preventDefault()
+        setPrevCon(true)
+    }
+    const [count,setCount] = useState(0)
+    const [Loading,setLoading] = useState(false)
+    let consulTationObjs = consultation.map((item,index)=><PrevConsultations key ={index} item={item} count={count} setCount={setCount} maxLenght ={consultation.length-1}/>)
+    console.log("Consultation is ",consultation)
     return(
             props.patient.length !==0 ?
+
+                prevCon ?
+                    consulTationObjs[count]
+                    :
                 <Container fluid="md">
                     <h1>Consultation</h1>
+                    <button onClick={event => prev(event)} disabled={consultation.length===0} >View Previous Consultations</button>
                     <form>
                         <label>Date</label>
                         <input type ="text" name="date" value={date} disabled={true} />
                         <br/>
                         <h1>Auto-refraction</h1>
-                        <AutoRefractionTable handleChange = {handleChange} reSphere={autoRefraction.reSphere} reCyl={autoRefraction.reCyl} reAxis={autoRefraction.reAxis} leSphere={autoRefraction.leSphere} leCyl={autoRefraction.leCyl} leAxis={autoRefraction.leAxis}/>
+                        <AutoRefractionTable handleChange = {handleChange}  autoRefraction={autoRefraction} />
                         <br/>
 
 
@@ -225,7 +238,7 @@ let Consultation = (props)=>{
                         <br/>
 
                         <h1>Anterior Segment</h1>
-                        <AntTable handleChange = {handleAntSeg}/>
+                        <AntTable handleChange = {handleAntSeg} real = {antSeg}/>
                         <br/>
 
                         <h1>Posterior Segment</h1>
@@ -247,7 +260,6 @@ let Consultation = (props)=>{
                         <textarea name="observation" value={observation}  onChange={event => handleConclusionObservation(event)} />
 
                         <br/>
-                        {/*<PrevConsultations consultation = {consultation}/>*/}
                         <button onClick={(event)=>formSubmit(event)}>Form Submit</button>
                     </form>
                 </Container>

@@ -14,7 +14,7 @@ let AntTable = props =>{
             </thead>
             <tbody>
             <tr>
-                <td><input onChange={event => props.handleChange(event)} name="reLids" /></td>
+                <td><input onChange={event => props.handleChange(event)} name="reLids"  value={props.data ? props.data.reLids:props.real.reLids} /></td>
                 <td>Lids/Lashes</td>
                 <td><input  onChange={event => props.handleChange(event)} name="leLids" /></td>
 
