@@ -46,12 +46,12 @@ let Consultation = (props)=>{
         reCyl:"",
         reAxis:"",
         reVa:"",
+        reUnaidedVa:"",
         leUnaidedVA:"",
         leSphere:"",
         leCyl:"",
         leAxis:"",
         leVa:""
-
     })
     const [contactLens,setContactLens] = useState({
         reCld:"",
@@ -202,6 +202,7 @@ let Consultation = (props)=>{
     }
     const [count,setCount] = useState(0)
     const [Loading,setLoading] = useState(false)
+
     let consulTationObjs = consultation.map((item,index)=><PrevConsultations key ={index} item={item} count={count} setCount={setCount} maxLenght ={consultation.length-1}/>)
     console.log("Consultation is ",consultation)
     return(
@@ -229,12 +230,12 @@ let Consultation = (props)=>{
 
                         <h1>Current Contact Lens</h1>
                         <br/>
-                        <ContactLensTable handleChange={handleContactLens} />
+                        <ContactLensTable currentContactLens={contactLens} handleChange={handleContactLens} />
                         <br/>
 
                         <h1>Examination</h1>
                         <br/>
-                        <ExaminationTable handleChange = {handleExamination}/>
+                        <ExaminationTable  examination={examination}  handleChange = {handleExamination}/>
                         <br/>
 
                         <h1>Anterior Segment</h1>
@@ -242,14 +243,14 @@ let Consultation = (props)=>{
                         <br/>
 
                         <h1>Posterior Segment</h1>
-                        <PostTable handleChange ={handlePostSegment} />
+                        <PostTable handleChange ={handlePostSegment} post={postSeg} />
                         <br/>
 
                         <h1>Contact Lens Fitting</h1>
 
                         <br/>
                         <h1>Contact Lens Fitting</h1>
-                        <LensFittingTable handleChange = {handleLensFitting}/>
+                        <LensFittingTable lensFitting={lensFittins}  handleChange = {handleLensFitting}/>
                         <br/>
 
                         <h1>Conclusion</h1>
