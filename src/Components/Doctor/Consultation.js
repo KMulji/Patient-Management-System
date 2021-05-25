@@ -194,17 +194,17 @@ let Consultation = (props)=>{
                 console.error("Error creating user document", error);
             }
         }
-
+            props.setCons(false);
+            props.setCons(true)
         }
     let prev = (event)=>{
         event.preventDefault()
         setPrevCon(true)
     }
     const [count,setCount] = useState(0)
-    const [Loading,setLoading] = useState(false)
 
-    let consulTationObjs = consultation.map((item,index)=><PrevConsultations key ={index} item={item} count={count} setCount={setCount} maxLenght ={consultation.length-1}/>)
-    console.log("Consultation is ",consultation)
+    let consulTationObjs = consultation.map((item,index)=><PrevConsultations key ={index} prev={setPrevCon} item={item} count={count} setCount={setCount} maxLenght ={consultation.length-1}/>)
+
     return(
             props.patient.length !==0 ?
 

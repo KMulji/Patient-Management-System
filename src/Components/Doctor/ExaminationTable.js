@@ -17,17 +17,17 @@ let ExaminationTable = (props) =>{
                 <tbody>
                 <tr>
                     <td>RE</td>
-                    <td><input  onChange={event => props.handleChange(event)} name="reSphere"  value={ props.data ? props.data.reSphere:props.examination.reSphere} /></td>
-                    <td><input  onChange={event => props.handleChange(event)} name="reCyl"  value={ props.data ? props.data.reCyl:props.examination.reCyl} /></td>
-                    <td><  input onChange={event => props.handleChange(event)}   name="reAxis"  value={ props.data ? props.data.reAxis:props.examination.reAxis} /></td>
-                    <td><input  onChange={event => props.handleChange(event)} name="reCdVa" value={ props.data ? props.data.reCdVa:props.examination.reCdVa} /></td>
+                    <td><input  onChange={props.examination ? event => props.handleChange(event):()=>""} name="reSphere"  value={ props.data ? props.data.reSphere:props.examination.reSphere} /></td>
+                    <td><input  onChange={props.examination ? event => props.handleChange(event):()=>""} name="reCyl"  value={ props.data ? props.data.reCyl:props.examination.reCyl} /></td>
+                    <td><  input onChange={props.examination ? event => props.handleChange(event):()=>""}   name="reAxis"  value={ props.data ? props.data.reAxis:props.examination.reAxis} /></td>
+                    <td><input  onChange={props.examination ? event => props.handleChange(event):()=>""} name="reCdVa" value={ props.data ? props.data.reCdVa:props.examination.reCdVa} /></td>
                 </tr>
                 <tr>
                     <td>LE</td>
-                    <td><input   onChange={event => props.handleChange(event)} name="leSphere"  value={ props.data ? props.data.leSphere:props.examination.leSphere} /></td>
-                    <td><input  onChange={event => props.handleChange(event)} name="leCyl" value={ props.data ? props.data.leCyl:props.examination.leCyl} /></td>
-                    <td><input  onChange={event => props.handleChange(event)} name="leAxis" value={ props.data ? props.data.leAxis:props.examination.leAxis} /></td>
-                    <td><input onChange={event => props.handleChange(event)} name="leCdVa" value={ props.data ? props.data.leCdVa:props.examination.leCdVa} /></td>
+                    <td><input   onChange={props.examination ? event => props.handleChange(event):()=>""} name="leSphere"  value={ props.data ? props.data.leSphere:props.examination.leSphere} /></td>
+                    <td><input  onChange={props.examination ? event => props.handleChange(event):()=>""} name="leCyl" value={ props.data ? props.data.leCyl:props.examination.leCyl} /></td>
+                    <td><input  onChange={props.examination ? event => props.handleChange(event):()=>""} name="leAxis" value={ props.data ? props.data.leAxis:props.examination.leAxis} /></td>
+                    <td><input onChange={props.examination ? event => props.handleChange(event):()=>""} name="leCdVa" value={ props.data ? props.data.leCdVa:props.examination.leCdVa} /></td>
                 </tr>
                 </tbody>
             </Table>
@@ -43,27 +43,27 @@ let ExaminationTable = (props) =>{
                 <tbody>
                 <tr>
                     <td>Distance Cover Test</td>
-                    <td><input  onChange={event => props.handleChange(event)} name="DCoverTest"  value={ props.data ? props.data.DCoverTest:props.examination.DCoverTest} /></td>
+                    <td><input  onChange={props.examination ? event => props.handleChange(event):()=>""} name="DCoverTest"  value={ props.data ? props.data.DCoverTest:props.examination.DCoverTest} /></td>
                 </tr>
                 <tr>
                     <td>Near Cover Test</td>
-                    <td><input  onChange={event => props.handleChange(event)} name="NCoverTest"  value={ props.data ? props.data.NCoverTest:props.examination.NCoverTest} /></td>
+                    <td><input  onChange={props.examination ? event => props.handleChange(event):()=>""} name="NCoverTest"  value={ props.data ? props.data.NCoverTest:props.examination.NCoverTest} /></td>
                 </tr>
                 <tr>
                     <td>Near point of convergence</td>
-                    <td><input  onChange={event => props.handleChange(event)} name="NPOC"  value={ props.data ? props.data.NPOC:props.examination.NPOC} /></td>
+                    <td><input  onChange={props.examination ? event => props.handleChange(event):()=>""} name="NPOC"  value={ props.data ? props.data.NPOC:props.examination.NPOC} /></td>
                 </tr>
                 <tr>
                     <td>Motility</td>
-                    <td><input  onChange={event => props.handleChange(event)} name="Motility" value={ props.data ? props.data.Motility:props.examination.Motility} /></td>
+                    <td><input  onChange={props.examination ? event => props.handleChange(event):()=>""} name="Motility" value={ props.data ? props.data.Motility:props.examination.Motility} /></td>
                 </tr>
                 <tr>
                     <td>Color Vision Test</td>
-                    <td><input  onChange={event => props.handleChange(event)} name="CVT"  value={ props.data ? props.data.CVT:props.examination.CVT} /></td>
+                    <td><input  onChange={props.examination ? event => props.handleChange(event):()=>""} name="CVT"  value={ props.data ? props.data.CVT:props.examination.CVT} /></td>
                 </tr>
                 <tr>
                     <td>Stereo test</td>
-                    <td><input  onChange={event => props.handleChange(event)} name="stereoTest" value={ props.data ? props.data.stereoTest:props.examination.stereoTest} /></td>
+                    <td><input  onChange={props.examination ? event => props.handleChange(event):()=>""} name="stereoTest" value={ props.data ? props.data.stereoTest:props.examination.stereoTest} /></td>
                 </tr>
                 </tbody>
             </Table>

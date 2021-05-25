@@ -10,7 +10,7 @@ import LensFittingTable from "./LensFittingTable";
 
 let PrevConsultations = (props)=>{
 
-    console.log(props.item)
+
 
     let next = event =>{
         event.preventDefault()
@@ -28,7 +28,12 @@ let PrevConsultations = (props)=>{
 
     return(
         <div>
+            <br/>
 
+            <button onClick={event => back(event)}>Back</button>
+            <button onClick={event => next(event)}>Next</button>
+            <button onClick={event => props.prev(false)} >Create new consultaitons</button>
+            <br/>
             {props.item.date}
             <h1>Auto Refraction</h1>
             <AutoRefractionTable data={props.item.autoRefraction}/>
@@ -67,11 +72,6 @@ let PrevConsultations = (props)=>{
             <textarea name="observation" value={props.item.observation}/>
             <br/>
             <br/>
-            <button onClick={event => back(event)}>Back</button>
-            <button onClick={event => next(event)}>Next</button>
-
-
-
 
         </div>
     )

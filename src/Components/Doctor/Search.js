@@ -68,7 +68,7 @@ let Search = ()=>{
 
             {viewPrecon ? (<PreConsultation patient = {filteredPatients}  />) :""}
 
-            {cons ? (<Consultation patient={filteredPatients} />):""}
+            {cons ? (<Consultation patient={filteredPatients} setCons={setCons}/>):""}
 
 
         </Container>
