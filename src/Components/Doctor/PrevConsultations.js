@@ -12,6 +12,7 @@ let PrevConsultations = (props)=>{
 
 
 
+
     let next = event =>{
         event.preventDefault()
         if (props.count < props.maxLenght){
@@ -27,6 +28,7 @@ let PrevConsultations = (props)=>{
     }
 
     return(
+        props.isPatient?
         <div>
             <br/>
 
@@ -74,6 +76,24 @@ let PrevConsultations = (props)=>{
             <br/>
 
         </div>
+            :
+
+            <div>
+
+                <button onClick={event => back(event)}>Back</button>
+                <button onClick={event => next(event)}>Next</button>
+                <br/>
+                {props.item.date}
+                <br/>
+                <h1>Conclusion</h1>
+                <textarea name="conclusion" value={props.item.conclusion}  />
+                <br/>
+
+                <h1>Recommendations</h1>
+                <textarea name="observation" value={props.item.observation}/>
+                <br/>
+                <br/>
+            </div>
     )
 }
 export default PrevConsultations

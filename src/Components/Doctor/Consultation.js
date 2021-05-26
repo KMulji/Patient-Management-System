@@ -195,7 +195,8 @@ let Consultation = (props)=>{
             }
         }
             props.setCons(false);
-            props.setCons(true)
+            props.setCons(true);
+            alert("Form Submitted")
         }
     let prev = (event)=>{
         event.preventDefault()
@@ -203,7 +204,7 @@ let Consultation = (props)=>{
     }
     const [count,setCount] = useState(0)
 
-    let consulTationObjs = consultation.map((item,index)=><PrevConsultations key ={index} prev={setPrevCon} item={item} count={count} setCount={setCount} maxLenght ={consultation.length-1}/>)
+    let consulTationObjs = consultation.map((item,index)=><PrevConsultations key ={index} prev={setPrevCon} isPatient={true} item={item} count={count} setCount={setCount} maxLenght ={consultation.length-1}/>)
 
     return(
             props.patient.length !==0 ?
