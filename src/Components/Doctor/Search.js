@@ -4,12 +4,15 @@ import firebase from "firebase";
 import {Container} from "react-bootstrap";
 import PreConsultation from "./PreConsultation";
 import Consultation from "./Consultation";
+import PrevConsultations from "./PrevConsultations";
 let Search = ()=>{
 
     const [patients,setPatients] = useState([])
     const [search,setSearch] = useState({phoneNumber:"",firstName:""})
     const [viewPrecon,setPreCon] = useState(false)
     const [cons,setCons] = useState(false)
+
+
     useEffect(()=>{
         const fetchData =async ()=>{
             const db =firebase.firestore()
@@ -34,12 +37,15 @@ let Search = ()=>{
         event.preventDefault()
         setPreCon(true)
         setCons(false)
+
     }
     let con = (event)=>{
         event.preventDefault()
         setCons(true)
         setPreCon(false)
+
     }
+
     let disabled = ()=>{
         return search.phoneNumber === "" || search.firstName === "";
 
@@ -59,9 +65,11 @@ let Search = ()=>{
             <button onClick={event => go(event)} disabled={disabled()} >View PreConsultation </button>
             <button onClick={event => con(event)} disabled={disabled()} >Consultation</button>
 
+
             {viewPrecon ? (<PreConsultation patient = {filteredPatients}  />) :""}
 
-            {cons ? (<Consultation patient={filteredPatients} />):""}
+            {cons ? (<Consultation patient={filteredPatients} setCons={setCons}/>):""}
+
 
         </Container>
 
