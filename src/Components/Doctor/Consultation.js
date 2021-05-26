@@ -195,7 +195,8 @@ let Consultation = (props)=>{
             }
         }
             props.setCons(false);
-            props.setCons(true)
+            props.setCons(true);
+            alert("Form Submitted")
         }
     let prev = (event)=>{
         event.preventDefault()
