@@ -33,7 +33,8 @@ let PrevConsultations = (props)=>{
 
             <button  className="btn btn-info" onClick={event => back(event)}>Back</button>
             <button  className="btn btn-info" onClick={event => next(event)}>Next</button>
-            <button  className="btn btn-success" onClick={event => props.prev(false)} >Create new consultaitons</button>
+            <br/>
+            <button  className="btn btn-success" onClick={event => props.prev(false)} >Create new consultations</button>
             <br/>
             {props.item.date}
             <h1>Auto Refraction</h1>

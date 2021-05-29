@@ -202,15 +202,31 @@ let Consultation = (props)=>{
         event.preventDefault()
         setPrevCon(true)
     }
+    let handleConsDate = event => {
+        event.preventDefault()
+        const {name,value} = event.currentTarget
+        if (name==="consdate"){
+            setConsDate(value)
+            setCount2(0)
+        }
+    }
     const [count,setCount] = useState(0)
+    const [count2,setCount2] = useState(0)
+    const [consDate,setConsDate] = useState("")
+    let filetedArray  = consultation.filter(item=> item.date ===consDate)
 
-    let consulTationObjs = consultation.map((item,index)=><PrevConsultations key ={index} prev={setPrevCon} item={item} count={count} setCount={setCount} maxLenght ={consultation.length-1}/>)
-
+    let consulTationObjs = filetedArray.map((item,index)=><PrevConsultations key ={index} prev={setPrevCon} item={item} count={count2} setCount={setCount2} maxLenght ={filetedArray.length-1}/>)
+    let consulTationObjs2 = consultation.map((item,index)=><PrevConsultations key ={index} prev={setPrevCon} item={item} count={count} setCount={setCount} maxLenght ={consultation.length-1}/>)
     return(
             props.patient.length !==0 ?
 
                 prevCon ?
-                    consulTationObjs[count]
+                    <Container fluid="md">
+                        <h3>Search for specific Consultation</h3>
+                        <input type="text" name="consdate" value={consDate} onChange={event => handleConsDate(event)}/>
+
+                        { consDate===""? consulTationObjs2[count] : consulTationObjs[count2]}
+                    </Container>
                     :
                 <Container fluid="md">
                     <h1>Consultation</h1>
