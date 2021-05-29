@@ -32,6 +32,7 @@ function PatientDetails (){
 
             <br/>
             <h1>Consultation History</h1>
+
             <br/>
             {consulTationObjs[count]}
         </Container>
