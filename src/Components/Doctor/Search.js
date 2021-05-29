@@ -62,8 +62,8 @@ let Search = ()=>{
             <input name="phoneNumber" type="number" value={search.phoneNumber} onChange={event => handleChange(event)} />
             <br/>
 
-            <button onClick={event => go(event)} disabled={disabled()} >View PreConsultation </button>
-            <button onClick={event => con(event)} disabled={disabled()} >Consultation</button>
+            <button  className="btn btn-info" onClick={event => go(event)} disabled={disabled()} >View PreConsultation </button>
+            <button  className="btn btn-info"  onClick={event => con(event)} disabled={disabled()} >Consultation</button>
 
 
             {viewPrecon ? (<PreConsultation patient = {filteredPatients}  />) :""}

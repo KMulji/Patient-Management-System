@@ -21,12 +21,18 @@ function PatientDetails (){
 
     let consulTationObjs = consultation.map((item,index)=><PrevConsultations key ={index} isPatient={true} item={item} count={count} setCount={setCount} maxLenght ={consultation.length-1}/>)
     return(
-        consultation.length===0?
-            <h1>No Previous Consultations</h1>
-            :
-        <Container fluid = "md">
-            <br/>
 
+        consultation.length===0?
+            <Container fluid="md">
+                <h1>No Previous Consultations</h1>
+            </Container>
+            :
+
+        <Container fluid = "md">
+
+            <br/>
+            <h1>Consultation History</h1>
+            <br/>
             {consulTationObjs[count]}
         </Container>
 

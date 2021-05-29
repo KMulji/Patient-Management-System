@@ -110,7 +110,7 @@ let SubmitForm =(props)=>{
                 </tbody>
             </Table>
             <br/>
-            <button className="btn-dark" onClick={event => props.moveBack(event)}> Back </button>
+            <button className="btn btn-info" onClick={event => props.moveBack(event)}> Back </button>
             <br/>
             <br/>
             <button className="btn badge-success" onClick={(event => handleSubmit(event))}>Submit Form</button>

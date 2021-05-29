@@ -214,8 +214,10 @@ let Consultation = (props)=>{
                     :
                 <Container fluid="md">
                     <h1>Consultation</h1>
-                    <button onClick={event => prev(event)} disabled={consultation.length===0} >View Previous Consultations</button>
+                    <button  className="btn btn-info" onClick={event => prev(event)} disabled={consultation.length===0} >View Previous Consultations</button>
+                    <br/>
                     <form>
+                        <br/>
                         <label>Date</label>
                         <input type ="text" name="date" value={date} disabled={true} />
                         <br/>
@@ -262,7 +264,7 @@ let Consultation = (props)=>{
                         <textarea name="observation" value={observation}  onChange={event => handleConclusionObservation(event)} />
 
                         <br/>
-                        <button onClick={(event)=>formSubmit(event)}>Form Submit</button>
+                        <button className="btn btn-success" onClick={(event)=>formSubmit(event)}>Form Submit</button>
                     </form>
                 </Container>
                 :
