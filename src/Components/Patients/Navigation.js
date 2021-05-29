@@ -11,9 +11,10 @@ import Search from "../Doctor/Search";
 import PreConsultation from "../Doctor/PreConsultation";
 function Navigation(){
     const user = useContext(UserContext)
+
     const [number,setNumber] = useState(0)
     const [navLinks] = useState(user.userType ==="patient"? {l1:"/home",l2:"/patientDetails",l3:"/patientForm"}: {l1:"/doctorsHome",l2:"/searchForms"})
-    const [names] = useState(user.userType ==="patient"? {n1:"Home",n2:"My Details", n3:"Edit Information"}:{n1:"home",n2:"Search Forms"})
+    const [names] = useState(user.userType ==="patient"? {n1:"Home",n2:"Consultation History", n3:"Edit Information"}:{n1:"home",n2:"Search Forms"})
 
     let renderButtons =  ()=>{
         return user.userType==="patient" ? "btn btn-light btn-sm" :"invisible btn btn-light btn-sm"
@@ -23,10 +24,10 @@ function Navigation(){
 
         <Container fluid>
 
-            <Navbar collapseOnSelect  expand="sm" bg="dark" variant="dark">
+            <Navbar collapseOnSelect  expand="sm" bg="info" variant="dark">
                 <Container>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-                    <Navbar.Brand >Patient Management System</Navbar.Brand>
+                    <Navbar.Brand >Muthaiga Eye Clinic</Navbar.Brand>
                     <Navbar.Collapse id="responsive-navbar-nav">
 
                         <Nav className="mr-auto">

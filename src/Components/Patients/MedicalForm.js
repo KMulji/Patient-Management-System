@@ -108,7 +108,7 @@ let MedicalForm = (props)=>{
                     <h2>Add any Medication you are currently taking</h2>
                     <br/>
                     <input name="medicine" type="text" onChange={event => handleMedsChange(event)}/>
-                    <button className="btn btn-primary" onClick={event => handleAddingMeds(event)}>Add Medicine</button>
+                    <button className="btn btn-info" onClick={event => handleAddingMeds(event)}>Add Medicine</button>
                     {medObj}
                 </div>
 
@@ -124,7 +124,7 @@ let MedicalForm = (props)=>{
 
                     <input name="surgDate" type="date" onChange={event=>handleMedsChange(event)}/>
 
-                    <button className="btn btn-primary" onClick={event => handleAddingSurg(event)}>Add Surgery</button>
+                    <button className="btn btn-info" onClick={event => handleAddingSurg(event)}>Add Surgery</button>
                     {surgObj}
                     <br/>
                 </div>
@@ -133,7 +133,7 @@ let MedicalForm = (props)=>{
                     <h2>Add your allergies</h2>
                     <br/>
                     <input name="allergy"onChange={event=>handleMedsChange(event)}/>
-                    <button  className="btn btn-primary" onClick={event => handleAddingAllergy(event)}>Add Allergy</button>
+                    <button  className="btn btn-info" onClick={event => handleAddingAllergy(event)}>Add Allergy</button>
                     {allergObj}
                     <br/>
                 </div>
@@ -142,13 +142,13 @@ let MedicalForm = (props)=>{
                     <h2>Add Chronic Illnesses</h2>
                     <br/>
                     <input name="chronic" onChange={event=>handleMedsChange(event)}/>
-                    <button className="btn btn-primary" onClick={event => handleAddingChronic(event)}>Add Chronic Illness</button>
+                    <button className="btn btn-info" onClick={event => handleAddingChronic(event)}>Add Chronic Illness</button>
                     {chronObj}
                     <br/>
                 </div>
 
-                <button className="btn btn-dark"  onClick={event =>handleBack(event) }>Back</button>
-                <button className="btn btn-dark" onClick={event => handleMove(event)}>Next</button>
+                <button className="btn btn-info"  onClick={event =>handleBack(event) }>Back</button>
+                <button className="btn btn-info" onClick={event => handleMove(event)}>Next</button>
             </form>
         </Container>
     )

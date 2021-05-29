@@ -31,9 +31,9 @@ let PrevConsultations = (props)=>{
         <div>
             <br/>
 
-            <button onClick={event => back(event)}>Back</button>
-            <button onClick={event => next(event)}>Next</button>
-            <button onClick={event => props.prev(false)} >Create new consultaitons</button>
+            <button  className="btn btn-info" onClick={event => back(event)}>Back</button>
+            <button  className="btn btn-info" onClick={event => next(event)}>Next</button>
+            <button  className="btn btn-success" onClick={event => props.prev(false)} >Create new consultaitons</button>
             <br/>
             {props.item.date}
             <h1>Auto Refraction</h1>
@@ -78,8 +78,10 @@ let PrevConsultations = (props)=>{
             :
 
             <div>
-                <button onClick={event => back(event)}>Back</button>
-                <button onClick={event => next(event)}>Next</button>
+                <button className="btn btn-dark" onClick={event => back(event)}>Back</button>
+                <button  className="btn btn-dark" onClick={event => next(event)}>Next</button>
+                <br/>
+                {props.item.date}
                 <br/>
                 <h1>Conclusion</h1>
                 <textarea name="conclusion" value={props.item.conclusion}  />

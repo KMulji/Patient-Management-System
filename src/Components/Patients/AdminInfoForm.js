@@ -327,7 +327,7 @@ let AdminInfoForm = (props)=>{
                             <label>Next Of Kin Phone Email</label>
                             <input  className="form-control" type="email" name="nextOfKinEmail" value={props.patient.nextOfKinEmail} onChange={event => props.handleFormChange(event)}/>
                     </div>
-                <button  className="btn btn-dark" onClick={event => handleMove(event)}  disabled={disabled()}>Next</button>
+                <button  className="btn btn-info" onClick={event => handleMove(event)}  disabled={disabled()}>Next</button>
             </form>
         </Container>
 
