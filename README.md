@@ -1,1 +1,1 @@
-kyans patient
+This is supposed to be a patient management system
